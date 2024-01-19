@@ -10,7 +10,6 @@ const getData = async () => {
   try {
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
 
     let valoreSelezionato = "username"; //valore di base
     let valoreCercato = ""; //valore dell'input
