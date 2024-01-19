@@ -1,25 +1,25 @@
 import { forEachUtente } from "./forEachUtente.js";
 
 export const valoreRicevuto = (val, data, ricerca) => {
-  console.log(ricerca);
   if (val === "username" && ricerca !== "") {
     main.innerHTML = "";
     data.map((user) => {
-      if (user.username.toLowerCase().includes(ricerca)) {
+      if (user.username.toLowerCase().includes(ricerca.toLowerCase())) {
         forEachUtente(user);
       }
     });
   } else if (val === "email" && ricerca !== "") {
     main.innerHTML = "";
     data.map((user) => {
-      if (user.email.toLowerCase().includes(ricerca)) {
+      if (user.email.toLowerCase().includes(ricerca.toLowerCase())) {
         forEachUtente(user);
       }
     });
   } else if (val === "name" && ricerca !== "") {
+    console.log(data.name);
     main.innerHTML = "";
     data.map((user) => {
-      if (user.name.toLowerCase().includes(ricerca)) {
+      if (user.name.toLowerCase().includes(ricerca.toLowerCase())) {
         forEachUtente(user);
       }
     });
