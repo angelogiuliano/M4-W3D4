@@ -2,11 +2,11 @@ export const forEachUtente = (utente) => {
   main.innerHTML += `
         <div class="ms-3 card" style="width: 18rem;">
         <div class="card-body">
-          <h5 class="card-title">Name: ${utente.name}</h5>
-          <p class="card-text">Username: ${utente.username}</p>
-          <p class="card-text">Email: ${utente.email.toLowerCase()}</p>
-          <p class="card-text">Address: ${utente.address.city}</p>
-          <p class="card-text">Phone: ${utente.phone}</p>
+          <p class="card-title"><b>Name:</b> ${utente.name}</p>
+          <p class="card-text"><b>Username:</b> ${utente.username}</p>
+          <p class="card-text"><b>Email:</b> ${utente.email.toLowerCase()}</p>
+          <p class="card-text"><b>Address:</b> ${utente.address.city}</p>
+          <p class="card-text"><b>Phone:</b> ${utente.phone}</p>
         </div>
       </div>`;
 };
