@@ -1,24 +1,44 @@
-import { forEachUtente } from "./forEachUtente.js"
-import { valoreRicevuto } from "./valoreRicevuto.js"
+import { forEachUtente } from "./forEachUtente.js";
+import { valoreRicevuto } from "./valoreRicevuto.js";
 
-const url = 'https://jsonplaceholder.typicode.com/users'
-const main = document.getElementById('main')
-const selectDropdown = document.getElementById('dropdown-select')
-
+const url = "https://jsonplaceholder.typicode.com/users";
+const main = document.getElementById("main");
+const selectDropdown = document.getElementById("dropdown-select");
+const input = document.getElementById("input");
 
 const getData = async () => {
-    const response = await fetch(url)
-    const data = await response.json()
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
 
     let valoreSelezionato = "username"; //valore di base
+    let valoreCercato = ""; //valore dell'input
 
-    valoreRicevuto(valoreSelezionato, data)
+    selectDropdown.addEventListener("change", function () {
+      valoreSelezionato = selectDropdown.value;
+    });
 
-    selectDropdown.addEventListener('change', function() {
-        valoreSelezionato = selectDropdown.value
-        valoreRicevuto(valoreSelezionato, data)
-    })
-    
-}
+    input.addEventListener("change", () => {
+      valoreCercato = input.value;
+      valoreRicevuto(valoreSelezionato, data, valoreCercato);
 
-getData()
+      if (input.value === "") {
+        main.innerHTML = "";
+        data.map((user) => {
+          forEachUtente(user);
+        });
+      }
+    });
+
+    valoreRicevuto(valoreSelezionato, data, valoreCercato);
+
+    data.map((user) => {
+      forEachUtente(user);
+    });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+getData();

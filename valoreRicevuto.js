@@ -1,11 +1,29 @@
-export const valoreRicevuto = (val, data) => {
-    if (val === "username") {
-        data.forEach((user) => console.log(user.username))
-    } else if (val === "email") {
-        data.forEach((user) => console.log(user.email))
-    } else if (val === "name") {
-        data.forEach((user) => console.log(user.name))
-    } else {
-        main.innerHTML += `<h1>Errore, riprova</h1>`
-    }
-}
+import { forEachUtente } from "./forEachUtente.js";
+
+export const valoreRicevuto = (val, data, ricerca) => {
+  console.log(ricerca);
+  if (val === "username" && ricerca !== "") {
+    main.innerHTML = "";
+    data.map((user) => {
+      if (user.username.toLowerCase().includes(ricerca)) {
+        forEachUtente(user);
+      }
+    });
+  } else if (val === "email" && ricerca !== "") {
+    main.innerHTML = "";
+    data.map((user) => {
+      if (user.email.toLowerCase().includes(ricerca)) {
+        forEachUtente(user);
+      }
+    });
+  } else if (val === "name" && ricerca !== "") {
+    main.innerHTML = "";
+    data.map((user) => {
+      if (user.name.toLowerCase().includes(ricerca)) {
+        forEachUtente(user);
+      }
+    });
+  } else if (ricerca === "") {
+    main.innerHTML += `<h1 class="w-100 m-3">Cerca qualcosa!</h1>`;
+  }
+};
